@@ -64,9 +64,10 @@ function useAxiosInstance() {
         return axios(config);
       }else{ // 로그인 안한 경우
         navigateLogin();
+        return Promise.resolve(); // 로그인 페이지로 이동하므로 에러를 더 이상 전달하지 않음
       }
     }
-    return Promise.reject(error);
+    return Promise.reject(error); // 호출하는 쪽에서 catch로 예외처리
   });
 
   function navigateLogin(){
